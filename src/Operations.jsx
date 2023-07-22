@@ -1,13 +1,15 @@
 /** @format */
 
-import React from "react";
+import React, { useContext } from "react";
+import { textContext } from "./Calculator";
 
-function Operations({ onChange }) {
+function Operations() {
+  const setText = useContext(textContext);
   return (
     <div id="Operations">
       <button
         onClick={(e) => {
-          onChange((prev) => prev + "+");
+          setText((prev) => prev + "+");
         }}
       >
         {" "}
@@ -15,7 +17,7 @@ function Operations({ onChange }) {
       </button>
       <button
         onClick={(e) => {
-          onChange((prev) => prev + "*");
+          setText((prev) => prev + "*");
         }}
       >
         {" "}
@@ -23,7 +25,7 @@ function Operations({ onChange }) {
       </button>
       <button
         onClick={(e) => {
-          onChange((prev) => prev + "/");
+          setText((prev) => prev + "/");
         }}
       >
         {" "}
@@ -31,7 +33,7 @@ function Operations({ onChange }) {
       </button>
       <button
         onClick={(e) => {
-          onChange((prev) => prev + "-");
+          setText((prev) => prev + "-");
         }}
       >
         {" "}

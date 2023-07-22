@@ -1,16 +1,18 @@
 /** @format */
 
-import React from "react";
+import React, { useContext } from "react";
+import { textContext } from "./Calculator";
 
-function NumPadItems({ numbers, onChange }) {
+function NumPadItems({ numbers }) {
+  const setText = useContext(textContext);
   return (
     <div className="NumPadItem">
       {numbers.map((value) => (
         <button
           onClick={(e) => {
             value === "="
-              ? onChange((prev) => eval(prev))
-              : onChange((prev) => prev + value);
+              ? setText((prev) => eval(prev))
+              : setText((prev) => prev + value);
           }}
         >
           {value}

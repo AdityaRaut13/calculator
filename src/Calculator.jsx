@@ -5,19 +5,23 @@ import "./index.css";
 import NumPad from "./NumPad";
 import Operations from "./Operations";
 
+export const textContext = React.createContext();
+
 function Calculator() {
   const [text, setText] = useState("");
   return (
     <div id="container">
-      <input
-        type="text"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-      />
-      <div id="ContainerButton">
-        <NumPad onChange={setText} />
-        <Operations onChange={setText} />
-      </div>
+      <textContext.Provider value={setText}>
+        <input
+          type="text"
+          value={text}
+          onChange={e=>setText(text)}
+        />
+        <div id="ContainerButton">
+          <NumPad />
+          <Operations />
+        </div>
+      </textContext.Provider>
     </div>
   );
 }
